@@ -13,13 +13,14 @@
           |||
         </div>
         <el-menu background-color="#333744" text-color="#fff" active-text-color="#409eff"
-                 unique-opened :collapse="isCollapsed" :collapse-transition="false" router>
+                 unique-opened :collapse="isCollapsed" :collapse-transition="false" router :default-active="activePath">
           <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
             <template slot="title">
               <i :class="iconsObj[item.id]"></i>
               <span>{{ item.authName }}</span>
             </template>
-            <el-menu-item :index="'/' + subItem.path" v-for="subItem in item.children" :key="subItem.id">
+            <el-menu-item :index="'/' + subItem.path" v-for="subItem in item.children" :key="subItem.id"
+                          @click="saveNavState('/' + subItem.path)">
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span>{{ subItem.authName }}</span>
@@ -46,11 +47,13 @@
           '102': 'iconfont icon-danju',
           '145': 'iconfont icon-baobiao'
         },
-        isCollapsed: false
+        isCollapsed: false,
+        activePath: ''
       }
     },
     created () {
       this.getMenuList()
+      this.activePath = window.sessionStorage.getItem('activePath')
     },
     methods: {
       logout () {
@@ -64,6 +67,10 @@
       },
       toggleCollapse () {
         this.isCollapsed = !this.isCollapsed
+      },
+      saveNavState (activePath) {
+        this.activePath = activePath
+        window.sessionStorage.setItem('activePath', activePath)
       }
     }
   }
