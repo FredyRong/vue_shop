@@ -285,7 +285,7 @@
             return this.$message.error('更新用户信息失败！')
           }
           this.editDialogVisible = false
-          this.getUserList()
+          await this.getUserList()
           return this.$message.success('更新用户信息成功！')
         })
       },
