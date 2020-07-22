@@ -11,11 +11,11 @@ html, body, #app {
     font-size: 12px;
 }
 
-.el-card{
+.el-card {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
 }
 
-.el-table{
+.el-table {
     margin-top: 15px;
     font-size: 12px;
 }
@@ -26,4 +26,16 @@ html, body, #app {
 
 .el-cascader-panel {
     height: 200px;
+}
+
+.el-steps {
+    margin: 15px 0;
+}
+
+.el-step__title{
+    font-size: 13px;
+}
+
+.ql-editor{
+    min-height: 300px;
 }
